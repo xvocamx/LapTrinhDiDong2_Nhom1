@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.khachhangarea_realfood">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KhachHangArea_RealFood"
+        tools:replace="android:theme">
+        <activity android:name=".TatCaSanPham" android:label="Tất cả sản phẩm" android:parentActivityName=".Home"></activity>
+        <activity
+            android:name=".TatCaCuaHang"
+            android:label="Tất cả của hàng"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".DanhGiaKhachHang"
+            android:label="Phản hồi khách hàng"
+            android:parentActivityName=".DonMua" />
+        <activity
+            android:name=".ChiTietDonHang"
+            android:label="Chi Tiết đơn hàng"
+            android:parentActivityName=".DonMua" />
+        <activity
+            android:name=".ThanhToanActivity"
+            android:label="Thanh Toán"
+            android:parentActivityName=".GioHang" />
+        <activity
+            android:name=".DanhSachLoai"
+            android:label="Danh sách loại sản phẩm"
+            android:parentActivityName=".Home" />
+        <activity android:name=".YeuThich" />
+        <activity
+            android:name=".SearchViewSanPham"
+            android:label="Danh sách sản phẩm"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".SuaThongTin"
+            android:label="Thông tin cá nhân"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".GioHang"
+            android:label="Giỏ hàng"
+            android:parentActivityName=".ChiTietSanPham" />
+        <activity
+            android:name=".DonMua"
+            android:label="Đơn hàng"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".ChiTietCuaHang"
+            android:label="Chi tiết cửa hàng"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".ChiTietSanPham"
+            android:label="Chi tiết sản phẩm"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".DoiMatKhau"
+            android:label="@string/doimatkhau"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".QuenMatKhau"
+            android:label="@string/quenmatkhau"
+            android:parentActivityName=".DangNhap" />
+        <activity android:name=".Home" />
+        <activity
+            android:name=".DangKy"
+            android:label="@string/dangky"
+            android:parentActivityName=".DangNhap" />
+        <activity android:name=".DangNhap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/picker_provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

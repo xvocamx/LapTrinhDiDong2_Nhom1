@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DoiMatKhau">
+
+    <EditText
+        android:id="@+id/edtPassword"
+        style="@style/edittext"
+        android:inputType="textPassword"
+        android:hint="@string/password" />
+
+    <EditText
+        android:id="@+id/edtNewPassword"
+        style="@style/edittext"
+        android:inputType="textPassword"
+        android:hint="@string/NewPassword" />
+
+    <EditText
+        android:id="@+id/edtConfirmNewPassword"
+        android:inputType="textPassword"
+        style="@style/edittext"
+        android:hint="@string/ConfirmNewPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLuu"
+        style="@style/button"
+        android:text="@string/luu"/>
+
+</LinearLayout>

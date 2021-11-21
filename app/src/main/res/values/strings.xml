@@ -1,0 +1,77 @@
+<resources>
+
+    <string name="app_name">KhachHangArea_RealFood</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="quenmatkhau">Quên mật khẩu?</string>
+    <string name="bancotaikhoanchua">Bạn có tài khoản chưa ?</string>
+    <string name="dangky">Đăng ký</string>
+    <string name="hoten">Họ tên</string>
+    <string name="sdt">Số điện thoại</string>
+    <string name="diachi">Địa chỉ</string>
+    <string name="nhaplaimatkhau">Nhập lại nhập khẩu</string>
+    <string name="bandacotaikhoanroi">Bạn đã có tài khoản rồi ?</string>
+    <string name="gui">Gửi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thongtincanhan">Thông tin cá nhân</string>
+    <string name="xem_l_ch_s_mua_h_ng">Xem lịch sử mua hàng</string>
+    <string name="donmua">Đơn mua</string>
+    <string name="s_a">Sửa</string>
+    <string name="danggiao">Đang giao</string>
+    <string name="choxacnhan">Chờ xác nhận</string>
+    <string name="cholayhang">Chờ lấy hàng</string>
+    <string name="danhgia">Đánh giá</string>
+    <string name="doimatkhau">Đổi mật khẩu</string>
+    <string name="doimatkhaumoi">Đổi mật khẩu mới</string>
+    <string name="gioithieu">Giới thiệu</string>
+    <string name="ri_ng_t">Riêng tư</string>
+    <string name="d_ch_v_v_ch_ch_s_ch">Dịch vụ và chích sách</string>
+    <string name="tr_gi_p">Trợ giúp</string>
+    <string name="ConfirmNewPassword">Nhập lại mật khẩu mới</string>
+    <string name="NewPassword">Nhập mật khẩu mới</string>
+    <string name="luu">Lưu</string>
+    <string name="ratings">ratings)</string>
+    <string name="xem_shop">Xem Shop</string>
+    <string name="yeuthich">Yêu thích</string>
+    <string name="nh_gi">Đánh giá:</string>
+    <string name="h_nh_nh_d_ng_b_o_c_o">Hình ảnh dùng để báo cáo</string>
+    <string name="ghichu">Ghi chú</string>
+    <string name="them_ghi_chu">Thêm ghi chú</string>
+    <string name="m_khuy_n_m_i">Mã khuyến mãi</string>
+    <string name="vnd">VNĐ</string>
+    <string name="t_ng_ph">Tổng phụ</string>
+    <string name="chi_ph_v_n_chuy_n">Chi phí vận chuyển</string>
+    <string name="ma_giam_gia">Mã giảm giá</string>
+    <string name="tong_tien">Tổng tiền</string>
+    <string name="thanh_toan">Thanh toán</string>
+    <string name="tencuahang">Pizza Food</string>
+    <string name="trang_chu">Trang chủ</string>
+    <string name="yeu_thich">Yêu thích</string>
+    <string name="thong_bao">Thông báo</string>
+    <string name="cai_dat">Cài đặt</string>
+    <string name="nhanxet">Nhận xét</string>
+    <string name="s_l_ng_b_n">Số lượng đã bán:</string>
+    <string name="da_ban">Đã bán:</string>
+    <string name="gift_code">Mã giảm giá</string>
+    <string name="giftcode">Gift code</string>
+    <string name="ghi_ch">Ghi chú:</string>
+
+    <array name="category">
+        <item>Pizaa</item>
+        <item>Trà sữa</item>
+        <item>Coffee</item>
+        <item>Bánh mì</item>
+    </array>
+
+    <array name="lydo">
+        <item>Chọn lý do</item>
+        <item>Hình ảnh thức ăn không giống trên app</item>
+        <item>Shop bán thiếu</item>
+        <item>Shop bán hàng mất vệ sinh</item>
+        <item>Shop bán hàng không đúng quy đinh</item>
+        <item>Shop giao hàng quá lâu</item>
+        <item>Khác</item>
+    </array>
+</resources>
