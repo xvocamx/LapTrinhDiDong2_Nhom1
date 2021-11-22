@@ -32,6 +32,7 @@ import com.example.khachhangarea_realfood.adapter.CuaHangAdapter;
 import com.example.khachhangarea_realfood.adapter.LoaiSanPhamAdapter;
 import com.example.khachhangarea_realfood.adapter.SanPhamAdapter;
 import com.example.khachhangarea_realfood.model.CuaHang;
+import com.example.khachhangarea_realfood.model.DonHangInfo;
 import com.example.khachhangarea_realfood.model.KhachHang;
 import com.example.khachhangarea_realfood.model.LoaiSanPham;
 import com.example.khachhangarea_realfood.model.SanPham;
@@ -194,7 +195,16 @@ public class HomeFragment extends Fragment {
         firebase_manager.mDatabase.child("DonHangInfo").orderByChild("idkhachHang").equalTo(firebase_manager.auth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ivMyOrder.setBadgeValue((int) snapshot.getChildrenCount());
+                int tong =0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                {
+                    DonHangInfo donHangInfo = dataSnapshot.getValue(DonHangInfo.class);
+                    if (donHangInfo.getIDDonHang().isEmpty())
+                    {
+                        tong++;
+                    }
+                }
+                ivMyOrder.setBadgeValue(tong);
             }
 
             @Override
