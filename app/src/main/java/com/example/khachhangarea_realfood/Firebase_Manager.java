@@ -284,6 +284,7 @@ public class Firebase_Manager {
                         return o2.getNgayTao().compareTo(o1.getNgayTao());
                     }
                 });
+
                 if (donHangs.size() == 0) {
                     donHangs.clear();
                     donMuaChuanBiHangAdpater.notifyDataSetChanged();
@@ -464,7 +465,7 @@ public class Firebase_Manager {
                     yeuThichShopAdapter.notifyDataSetChanged();
                 }
                 pb.setVisibility(View.GONE);
-                if(cuaHangs.size() == 0){
+                if (cuaHangs.size() == 0) {
                     cuaHangs.clear();
                     yeuThichShopAdapter.notifyDataSetChanged();
                 }
@@ -488,7 +489,7 @@ public class Firebase_Manager {
                     yeuThichFoodAdapter.notifyDataSetChanged();
                 }
                 pb.setVisibility(View.GONE);
-                if(sanPhams.size() == 0){
+                if (sanPhams.size() == 0) {
                     sanPhams.clear();
                     yeuThichFoodAdapter.notifyDataSetChanged();
                 }
@@ -552,9 +553,10 @@ public class Firebase_Manager {
                     CuaHang cuaHang = dataSnapshot.getValue(CuaHang.class);
                     if (cuaHang.getTrangThaiCuaHang() != TrangThaiCuaHang.ChuaKichHoat) {
                         cuaHangs.add(cuaHang);
-                        cuaHangAdapter.notifyDataSetChanged();
                     }
                 }
+                Collections.reverse(cuaHangs);
+                cuaHangAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -565,16 +567,19 @@ public class Firebase_Manager {
     }
 
     public void GetPopularFood(ArrayList<SanPham> sanPhams, SanPhamAdapter sanPhamAdapter) {
-        mDatabase.child("SanPham").orderByChild("soLuongBanDuoc").limitToFirst(6).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("SanPham").orderByChild("soLuongBanDuoc").limitToLast(6).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 sanPhams.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
                     sanPhams.add(sanPham);
-                    sanPhamAdapter.notifyDataSetChanged();
+
                 }
+                Collections.reverse(sanPhams);
+                sanPhamAdapter.notifyDataSetChanged();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -593,11 +598,11 @@ public class Firebase_Manager {
                     SanPham sanPham = dataSnapshot.getValue(SanPham.class);
                     mDatabase.child("Voucher").limitToFirst(5).addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                 Voucher voucher = dataSnapshot.getValue(Voucher.class);
-                                if(voucher.getSanPham().getIDSanPham().equals(sanPham.getIDSanPham())){
+                                if (voucher.getSanPham().getIDSanPham().equals(sanPham.getIDSanPham())) {
                                     sanPhams.add(sanPham);
                                     sanPhamAdapter.notifyDataSetChanged();
                                 }
@@ -605,7 +610,7 @@ public class Firebase_Manager {
                         }
 
                         @Override
-                        public void onCancelled(@NonNull  DatabaseError error) {
+                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
                     });
@@ -620,7 +625,7 @@ public class Firebase_Manager {
 
     }
 
-    public void LoadTatCaSanPham (ArrayList<SanPham> sanPhams, SanPhamAdapter sanPhamAdapter, ProgressBar pb) {
+    public void LoadTatCaSanPham(ArrayList<SanPham> sanPhams, SanPhamAdapter sanPhamAdapter, ProgressBar pb) {
         mDatabase.child("SanPham").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

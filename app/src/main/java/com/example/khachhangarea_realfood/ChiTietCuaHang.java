@@ -47,6 +47,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,7 +59,7 @@ public class ChiTietCuaHang extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager2 mViewPager;
     private ViewPaperAdapter viewPaperAdapter;
-    private TextView tvTenCuaHang, tvEmail, tvDiaChi, tvPhone, tvMota, tvTongSanPham, tvRating, tvTBRating;
+    private TextView tvTenCuaHang, tvEmail, tvDiaChi, tvPhone, tvMota, tvTongSanPham, tvRating, tvTBRating,tvThoiGianMoCua,tvThoiGianDongCua;
     private Button btnYeuThich;
     private ImageView ivWallPaper;
     private CircleImageView civAvatar;
@@ -98,7 +99,12 @@ public class ChiTietCuaHang extends AppCompatActivity {
             tvDiaChi.setText(cuaHang.getDiaChi());
             tvPhone.setText(cuaHang.getSoDienThoai());
             tvMota.setText(cuaHang.getThongTinChiTiet());
-
+            if(cuaHang.getTimeStart() != null && cuaHang.getTimeEnd() != null){
+                String dateStart = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(cuaHang.getTimeStart());
+                String dateEnd = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(cuaHang.getTimeEnd());
+                tvThoiGianMoCua.setText(dateStart);
+                tvThoiGianDongCua.setText(dateEnd);
+            }
             firebase_manager.mDatabase.child("SanPham").orderByChild("idcuaHang").equalTo(cuaHang.getIDCuaHang()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,16 +203,17 @@ public class ChiTietCuaHang extends AppCompatActivity {
     }
 
     private void LoadItemGiamGia() {
-        firebase_manager.mDatabase.child("Voucher").orderByChild("idcuaHang").equalTo(cuaHang.getIDCuaHang()).addValueEventListener(new ValueEventListener() {
+        firebase_manager.mDatabase.child("Voucher").orderByChild("idCuaHang").equalTo(cuaHang.getIDCuaHang()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 vouchers.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Voucher voucher = dataSnapshot.getValue(Voucher.class);
                     Date currentDateandTime = new Date();
-                    if (currentDateandTime.compareTo(voucher.getHanSuDung()) > 0) {
+                    if (currentDateandTime.compareTo(voucher.getHanSuDung()) < 0) {
                         vouchers.add(voucher);
                         giamGiaAdapter.notifyDataSetChanged();
+
                     }
                 }
             }
@@ -234,5 +241,7 @@ public class ChiTietCuaHang extends AppCompatActivity {
         rcvGiamGia = findViewById(R.id.rcvMaGiamGia);
         tvRating = findViewById(R.id.tvRating);
         tvTBRating = findViewById(R.id.tvTBRating);
+        tvThoiGianMoCua = findViewById(R.id.tvThoiGianMoCua);
+        tvThoiGianDongCua =findViewById(R.id.tvThoiGianDongCua);
     }
 }
